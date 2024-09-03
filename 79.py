@@ -15,14 +15,16 @@ class Solution:
         return new_matrix
 
     def search(self, board, word, i, j, c, oi, oj ):
-        print(c,"c")
+        
         if c == len(word):
             return True
+        print(c,"c ", word[c])
         if board[i+1][j] == word[c] and oi != i + 1:
             oi = i
             oj = j
             i += 1
             c += 1
+            print('1', 'i',i , 'j',j)
             
             self.search( board, word, i, j, c, oi, oj)
         if board[i-1][j] == word[c] and oi != i - 1:
@@ -30,18 +32,21 @@ class Solution:
             oj = j
             i -= 1
             c += 1
+            print('1', 'i',i , 'j',j)
             self.search( board, word, i, j, c, oi, oj)
         if board[i][j+1] == word[c] and oj != j + 1:
             oi = i
             oj = j
             j += 1
             c += 1
+            print('1', 'i',i , 'j',j)
             self.search( board, word, i, j, c, oi, oj)
         if board[i][j-1] == word[c] and oj != j - 1:
             oi = i
             oj = j
             j -= 1
             c += 1
+            print('1', 'i',i , 'j',j)
             self.search( board, word, i, j, c, oi, oj)
     
 
@@ -55,6 +60,7 @@ class Solution:
         for i in range(len(board)):
             for j in range(len(board[0])):
                 if word[0] == board[i][j]:
+                    print(i,'i',j,'j')
                     if self.search( board, word, i, j, c, oi, oj) == True:
                         return True
         return False
