@@ -1,0 +1,54 @@
+# cook your dish here
+
+def modd(n):
+    if n < 0:
+        return n * (-1)
+    else:
+        return n 
+        
+t = int(input())
+
+for x in range(t):
+    s = input()
+    ss = input()
+    
+    lis = ss.split()
+    
+    for i in range(len(lis)):
+        lis[i] = int(lis[i])
+        
+    aar = []
+    kry = []
+    
+    
+    
+    for i in range(len(lis)):
+        
+        if lis[i] == 1 or lis[i] == 3:
+            aar.append(i)
+         
+        if lis[i] == 2 or lis[i] == 3:
+            kry.append(i)
+    
+    sumaar = sum(aar)
+    sumkry = sum(kry)
+    print(aar,"aar")
+    print(kry,"kry")
+    
+    ans = []
+    
+    for i in range(len(lis)):
+        daar = sumaar - (i*len(aar))
+        dkry = sumkry - (i*len(kry))
+        ans.append(modd(daar-dkry))
+        
+        
+    print(ans)
+        
+                
+        
+    
+    
+    
+    
+    
