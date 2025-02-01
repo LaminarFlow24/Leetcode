@@ -2,22 +2,27 @@ class Solution:
     def maxFrequency(self, nums: List[int], k: int) -> int:
         coords = []
         nums.append(1000000)
-
+        print(nums)
+        
         for i in range(len(nums)):
             if nums[i] == k:
                 coords.append(i)
 
-        if len(coords) == 1:
-            print("hi")
-            p = coords[0]
-            return(max(self.countm(nums[0:p]), self.countm(nums[p+1:]))) + 1
+        
+        nk = len(coords)
+        coords = [-1] + coords
+        coords = coords + [len(nums) - 1]
+        print(coords)
+
+
 
         maxx = 0
         for i in range(len(coords) - 1):
             if maxx < self.countm(nums[coords[i] + 1 : coords[i+1]]):
                 maxx = self.countm(nums[coords[i] + 1 : coords[i+1]])
 
-        return maxx + len(coords)
+        print(maxx,nk)
+        return maxx + nk
 
 
     def countm(self, lis):
@@ -39,5 +44,5 @@ class Solution:
 
         if flag == False:
             return 0
-
+        print(key,"key")
         return v
